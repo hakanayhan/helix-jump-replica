@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Ball : MonoBehaviour
     public GameObject cylinder;
     public GameObject gameOver;
     public GameObject victory;
+    public Text victoryText;
+    int level;
     void Start()
     {
         gm = GameObject.FindObjectOfType<GameManager>();
@@ -34,8 +37,10 @@ public class Ball : MonoBehaviour
         }
         else if (metarialName == "Final Ring (Instance)")
         {
+            level = PlayerPrefs.GetInt("level");
             ball.GetComponent<Ball>().jumpForce = 0;
             cylinder.GetComponent<Rotate_Move>().enabled = false;
+            victoryText.text = "Level " + level + " Cleaned";
             victory.SetActive(true);
         }
         rb.velocity = Vector3.up * jumpForce;

@@ -8,9 +8,16 @@ public class GameManager : MonoBehaviour
 {
     private int score;
     public Text scoreText;
+    public Text levelText;
+    public int level;
     void Start()
     {
-        
+        level = PlayerPrefs.GetInt("level");
+        if (level < 1) {
+            level = 1;
+            PlayerPrefs.SetInt("level", level);
+        }
+        levelText.text = "Level: " + level.ToString();
     }
 
     void Update()
@@ -31,6 +38,9 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        level = level + 1;
+        PlayerPrefs.SetInt("level", level);
+        levelText.text = "Level: " + level.ToString();
         SceneManager.LoadScene(0);
     }
 }
