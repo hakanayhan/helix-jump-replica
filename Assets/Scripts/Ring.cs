@@ -15,7 +15,7 @@ public class Ring : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.y - 0.5f > ball.position.y)
+        if(transform.position.y - 0.3f > ball.position.y)
         {
             Destroy(gameObject);
             gm.GameScore(25);
