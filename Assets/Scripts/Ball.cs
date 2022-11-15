@@ -28,23 +28,36 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         string metarialName = other.gameObject.GetComponent<MeshRenderer>().material.name;
-        if (metarialName == "Unsafe Color (Instance)")
-        {
-            ball.GetComponent<Ball>().jumpForce = 0;
-            cylinder.GetComponent<Rotate_Move>().enabled = false;
-            gameOver.SetActive(true);
-            //gm.RestartGame();
-        }
-        else if (metarialName == "Final Ring (Instance)")
+        if (metarialName == "Final Ring (Instance)")
         {
             level = PlayerPrefs.GetInt("level");
+            PlayerPrefs.SetInt("lastScore", gm.score);
             ball.GetComponent<Ball>().jumpForce = 0;
             cylinder.GetComponent<Rotate_Move>().enabled = false;
             victoryText.text = "Level " + level + " Cleaned";
             victory.SetActive(true);
         }
+        else if (gm.skill > 3)
+        {
+            rb.velocity = Vector3.up * jumpForce;
+            gm.removeSkill();
+            Destroy(other.transform.parent.gameObject);
+            return;
+        }
+        else if (metarialName == "Unsafe Color (Instance)")
+        {
+            PlayerPrefs.SetInt("lastScore", 0);
+            ball.GetComponent<Ball>().jumpForce = 0;
+            cylinder.GetComponent<Rotate_Move>().enabled = false;
+            gameOver.SetActive(true);
+            //gm.RestartGame();
+        }
+        else if (metarialName == "Safe Color (Instance)")
+        {
+            gm.removeSkill();
+        }
         rb.velocity = Vector3.up * jumpForce;
-        GameObject splash = Instantiate(splashPrefab, transform.position + new Vector3(0,-0.2f,0), transform.rotation);
+        GameObject splash = Instantiate(splashPrefab, transform.position + new Vector3(0, -0.2f, 0), transform.rotation);
         splash.transform.SetParent(other.gameObject.transform);
     }
 }

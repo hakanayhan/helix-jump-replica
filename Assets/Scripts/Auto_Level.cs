@@ -60,6 +60,8 @@ public class Auto_Level : MonoBehaviour
             }
         }
         int maxDisabledNumber = 9 - maxUnsafeColor;
+        if (maxDisabledNumber > 5) { maxDisabledNumber = 5; }
+
         int howManyDisabled = Random.Range(1, maxDisabledNumber);
         for (int j = 0; j < howManyDisabled;)
         {

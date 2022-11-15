@@ -19,6 +19,7 @@ public class Ring : MonoBehaviour
         {
             Destroy(gameObject);
             gm.GameScore(25);
+            gm.addSkill(1);
         }
     }
 }
