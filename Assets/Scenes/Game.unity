@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.88235295, g: 0.6627451, b: 0.11764706, a: 1}
+  m_Color: {r: 0, g: 0.6431373, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6431373, b: 0.16078432, a: 0.9019608}
+  m_Color: {r: 0, g: 0.6431373, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2036,9 +2036,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b211e94a14852749923906e179d7523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   scoreText: {fileID: 270272782}
   levelText: {fileID: 1112283007}
   level: 0
+  skill: 0
 --- !u!1001 &635139112597763506
 PrefabInstance:
   m_ObjectHideFlags: 0

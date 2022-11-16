@@ -18,7 +18,7 @@ public class Ring : MonoBehaviour
         if(transform.position.y - 0.3f > ball.position.y)
         {
             Destroy(gameObject);
-            gm.GameScore(25);
+            gm.GameScore(2);
             gm.addSkill(1);
         }
     }
