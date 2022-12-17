@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Text levelText;
     public int level;
     public int skill = 0;
+    public GameObject ball;
+    public Material skilledBallRef;
     void Start()
     {
         score = PlayerPrefs.GetInt("lastScore");
@@ -30,6 +32,10 @@ public class GameManager : MonoBehaviour
 
     public void GameScore(int ringScore)
     {
+        if (skill > 2) {
+            ringScore += skill - 1;
+        }
+        Debug.Log(ringScore);
         score += ringScore;
         scoreText.text = score.ToString();
     }
@@ -47,14 +53,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void addSkill(int n)
+    public void AddSkill(int n)
     {
         skill = skill + n;
+        if (skill == 4)
+        {
+            ball.GetComponent<Renderer>().material = skilledBallRef;
+        }
         Debug.Log(skill);
     }
 
-    public void removeSkill()
-    {
-        skill = 0;
-    }
+    public void RemoveSkill() { skill = 0; }
 }

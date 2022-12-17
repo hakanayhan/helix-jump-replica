@@ -518,6 +518,7 @@ MonoBehaviour:
   cylinder: {fileID: 1455474509}
   gameOver: {fileID: 577261480}
   victory: {fileID: 56501356}
+  unskilledBallRef: {fileID: 2100000, guid: 702ec0411574af744bf33a502ce5de99, type: 2}
   victoryText: {fileID: 41591613}
 --- !u!135 &146639875
 SphereCollider:
@@ -669,7 +670,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9433962, g: 0.23284027, b: 0.14684942, a: 0.9019608}
+      key0: {r: 0.95686275, g: 0.34117648, b: 0.26666668, a: 0.9019608}
       key1: {r: 0.95686275, g: 0.34117648, b: 0.26666668, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -2005,10 +2006,10 @@ MonoBehaviour:
     type: 3}
   final_ring: {fileID: 1242059214214908337, guid: 142c0238b85eae946b71c5fbca99ff93,
     type: 3}
-  Cylinder: {fileID: 1455474509}
+  cylinder: {fileID: 1455474509}
   unsafeMaterialRef: {fileID: 2100000, guid: bf916d2f9b854f547a103c3043ccbc3e, type: 2}
   safeMaterialRef: {fileID: 2100000, guid: 5d6b606c800d2b24c91f2e871f8b0a99, type: 2}
-  gm: {fileID: 0}
+  gm: {fileID: 2019919435}
 --- !u!4 &2019919434
 Transform:
   m_ObjectHideFlags: 0
@@ -2041,6 +2042,8 @@ MonoBehaviour:
   levelText: {fileID: 1112283007}
   level: 0
   skill: 0
+  ball: {fileID: 146639872}
+  skilledBallRef: {fileID: 2100000, guid: 4a36b99861741e9428d7a4a173133817, type: 2}
 --- !u!1001 &635139112597763506
 PrefabInstance:
   m_ObjectHideFlags: 0

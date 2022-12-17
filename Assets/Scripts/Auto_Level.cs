@@ -7,7 +7,7 @@ public class Auto_Level : MonoBehaviour
     public GameObject last_ring;
     public GameObject prefab_ring;
     public GameObject final_ring;
-    public GameObject Cylinder;
+    public GameObject cylinder;
     public Material unsafeMaterialRef;
     public Material safeMaterialRef;
     public GameManager gm;
@@ -16,12 +16,12 @@ public class Auto_Level : MonoBehaviour
     {
         gm = GameObject.FindObjectOfType<GameManager>();
         level = PlayerPrefs.GetInt("level");
-        int number_of_rings = calculateNumberOfRings(level);
+        int number_of_rings = CalculateNumberOfRings(level);
         for (int i = 0; i < number_of_rings; i++)
         {
-            create_ring();
+            CreateRing();
         }
-        create_finalring();
+        CreateFinalRing();
     }
 
     void Update()
@@ -29,21 +29,21 @@ public class Auto_Level : MonoBehaviour
 
     }
 
-    private void create_ring()
+    private void CreateRing()
     {
         Vector3 direction = new Vector3(0, -2.2f, 0);
         var rotationVector = transform.rotation.eulerAngles;
         float rotn = (float)(level * 1.2);
         rotationVector.y = (int)(Random.Range(0, rotn));
-        last_ring = Instantiate(prefab_ring, last_ring.transform.position + direction, Quaternion.Euler(rotationVector), Cylinder.transform);
+        last_ring = Instantiate(prefab_ring, last_ring.transform.position + direction, Quaternion.Euler(rotationVector), cylinder.transform);
         int maxUnsafeColor = SetUnsafeColors(level);
         SetDisabledColors(maxUnsafeColor);
     }
 
-    private void create_finalring()
+    private void CreateFinalRing()
     {
         Vector3 direction = new Vector3(0, -2.4f, 0);
-        final_ring = Instantiate(final_ring, last_ring.transform.position + direction, last_ring.transform.rotation, Cylinder.transform);
+        final_ring = Instantiate(final_ring, last_ring.transform.position + direction, last_ring.transform.rotation, cylinder.transform);
         final_ring.SetActive(true);
     }
 
@@ -88,5 +88,5 @@ public class Auto_Level : MonoBehaviour
             }
         }
     }
-    private int calculateNumberOfRings(int level) => level / 3 + 10;
+    private int CalculateNumberOfRings(int level) => level / 3 + 10;
 }

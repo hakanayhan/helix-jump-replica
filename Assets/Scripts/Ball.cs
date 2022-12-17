@@ -13,6 +13,7 @@ public class Ball : MonoBehaviour
     public GameObject cylinder;
     public GameObject gameOver;
     public GameObject victory;
+    public Material unskilledBallRef;
     public Text victoryText;
     int level;
     void Start()
@@ -37,10 +38,11 @@ public class Ball : MonoBehaviour
             victoryText.text = "Level " + level + " Cleaned";
             victory.SetActive(true);
         }
-        else if (gm.skill > 3)
+        else if (gm.skill > 2)
         {
             rb.velocity = Vector3.up * jumpForce;
-            gm.removeSkill();
+            ball.GetComponent<Renderer>().material = unskilledBallRef;
+            gm.RemoveSkill();
             Destroy(other.transform.parent.gameObject);
             return;
         }
@@ -54,7 +56,7 @@ public class Ball : MonoBehaviour
         }
         else if (metarialName == "Safe Color (Instance)")
         {
-            gm.removeSkill();
+            gm.RemoveSkill();
         }
         rb.velocity = Vector3.up * jumpForce;
         GameObject splash = Instantiate(splashPrefab, transform.position + new Vector3(0, -0.2f, 0), transform.rotation);
