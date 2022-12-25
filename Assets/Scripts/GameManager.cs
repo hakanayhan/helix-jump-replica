@@ -7,22 +7,22 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int score;
-    public Text scoreText;
-    public Text levelText;
     public int level;
     public int skill = 0;
-    public GameObject ball;
-    public Material skilledBallRef;
+    [SerializeField] private Text _scoreText;
+    [SerializeField] private Text _levelText;
+    [SerializeField] private GameObject _ball;
+    [SerializeField] private Material _skilledBallRef;
     void Start()
     {
         score = PlayerPrefs.GetInt("lastScore");
-        scoreText.text = score.ToString();
+        _scoreText.text = score.ToString();
         level = PlayerPrefs.GetInt("level");
         if (level < 1) {
             level = 1;
             PlayerPrefs.SetInt("level", level);
         }
-        levelText.text = "Level: " + level.ToString();
+        _levelText.text = "Level: " + level.ToString();
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log(ringScore);
         score += ringScore;
-        scoreText.text = score.ToString();
+        _scoreText.text = score.ToString();
     }
 
     public void RestartGame()
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         level = level + 1;
         PlayerPrefs.SetInt("level", level);
-        levelText.text = "Level: " + level.ToString();
+        _levelText.text = "Level: " + level.ToString();
         SceneManager.LoadScene(0);
     }
 
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         skill = skill + n;
         if (skill == 4)
         {
-            ball.GetComponent<Renderer>().material = skilledBallRef;
+            _ball.GetComponent<Renderer>().material = _skilledBallRef;
         }
         Debug.Log(skill);
     }

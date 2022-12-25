@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Camera_Controller : MonoBehaviour
 {
-    public Transform ball;
+    [SerializeField] private Transform _ball;
+    [SerializeField] private float _smoothSpeed;
     private Vector3 offset;
-    public float smoothSpeed;
     void Start()
     {
-        offset = transform.position - ball.position;
+        offset = transform.position - _ball.position;
     }
 
     void FixedUpdate()
     {
-        Vector3 newPos = Vector3.Lerp(transform.position, offset + ball.position, smoothSpeed);
+        Vector3 newPos = Vector3.Lerp(transform.position, offset + _ball.position, _smoothSpeed);
         transform.position = newPos;
     }
 }

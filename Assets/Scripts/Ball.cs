@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
-    public Rigidbody rb;
-    public float jumpForce;
-    public GameObject splashPrefab;
-    private GameManager gm;
-    public GameObject ball;
-    public GameObject cylinder;
-    public GameObject gameOver;
-    public GameObject victory;
-    public Material unskilledBallRef;
-    public Text victoryText;
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private float _jumpForce;
+    [SerializeField] private GameObject _splashPrefab;
+    [SerializeField] private GameObject _ball;
+    [SerializeField] private GameObject _cylinder;
+    [SerializeField] private GameObject _gameOver;
+    [SerializeField] private GameObject _victory;
+    [SerializeField] private Material _unskilledBallRef;
+    [SerializeField] private Text _victoryText;
+    private GameManager _gm;
     int level;
     void Start()
     {
-        gm = GameObject.FindObjectOfType<GameManager>();
+        _gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -32,34 +32,34 @@ public class Ball : MonoBehaviour
         if (metarialName == "Final Ring (Instance)")
         {
             level = PlayerPrefs.GetInt("level");
-            PlayerPrefs.SetInt("lastScore", gm.score);
-            ball.GetComponent<Ball>().jumpForce = 0;
-            cylinder.GetComponent<Rotate_Move>().enabled = false;
-            victoryText.text = "Level " + level + " Cleaned";
-            victory.SetActive(true);
+            PlayerPrefs.SetInt("lastScore", _gm.score);
+            _ball.GetComponent<Ball>()._jumpForce = 0;
+            _cylinder.GetComponent<Rotate_Move>().enabled = false;
+            _victoryText.text = "Level " + level + " Cleaned";
+            _victory.SetActive(true);
         }
-        else if (gm.skill > 2)
+        else if (_gm.skill > 2)
         {
-            rb.velocity = Vector3.up * jumpForce;
-            ball.GetComponent<Renderer>().material = unskilledBallRef;
-            gm.RemoveSkill();
+            _rb.velocity = Vector3.up * _jumpForce;
+            _ball.GetComponent<Renderer>().material = _unskilledBallRef;
+            _gm.RemoveSkill();
             Destroy(other.transform.parent.gameObject);
             return;
         }
         else if (metarialName == "Unsafe Color (Instance)")
         {
             PlayerPrefs.SetInt("lastScore", 0);
-            ball.GetComponent<Ball>().jumpForce = 0;
-            cylinder.GetComponent<Rotate_Move>().enabled = false;
-            gameOver.SetActive(true);
-            //gm.RestartGame();
+            _ball.GetComponent<Ball>()._jumpForce = 0;
+            _cylinder.GetComponent<Rotate_Move>().enabled = false;
+            _gameOver.SetActive(true);
+            //_gm.RestartGame();
         }
         else if (metarialName == "Safe Color (Instance)")
         {
-            gm.RemoveSkill();
+            _gm.RemoveSkill();
         }
-        rb.velocity = Vector3.up * jumpForce;
-        GameObject splash = Instantiate(splashPrefab, transform.position + new Vector3(0, -0.2f, 0), transform.rotation);
+        _rb.velocity = Vector3.up * _jumpForce;
+        GameObject splash = Instantiate(_splashPrefab, transform.position + new Vector3(0, -0.2f, 0), transform.rotation);
         splash.transform.SetParent(other.gameObject.transform);
     }
 }

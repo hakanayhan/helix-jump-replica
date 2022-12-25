@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Rotate_Move : MonoBehaviour
 {
-    public float rotateSpeed;
-    private float moveX;
-
+    [SerializeField] private float _rotateSpeed;
+    private float _moveX;
     void Update()
     {
-        moveX = Input.GetAxis("Mouse X");
+        _moveX = Input.GetAxis("Mouse X");
 
         if (Input.GetMouseButton(0))
         {
-            transform.Rotate(0f, moveX * rotateSpeed * Time.deltaTime, 0f);
+            transform.Rotate(0f, _moveX * _rotateSpeed * Time.deltaTime, 0f);
         }
     }
 }

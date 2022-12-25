@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Ring : MonoBehaviour
 {
-    public Transform ball;
-    private GameManager gm;
+    [SerializeField] private Transform _ball;
+    private GameManager _gm;
     void Start()
     {
-        gm = GameObject.FindObjectOfType<GameManager>();
+        _gm = GameObject.FindObjectOfType<GameManager>();
         GameObject ballG = GameObject.FindGameObjectWithTag("Ball");
-        ball = ballG.transform;
+        _ball = ballG.transform;
     }
 
     void Update()
     {
-        if(transform.position.y - 0.3f > ball.position.y)
+        if(transform.position.y - 0.3f > _ball.position.y)
         {
             Destroy(gameObject);
-            gm.AddSkill(1);
-            gm.GameScore(2);
+            _gm.AddSkill(1);
+            _gm.GameScore(2);
         }
     }
 }

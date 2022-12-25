@@ -510,16 +510,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afed279714fa1d84bbfce992b029ff38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 146639873}
-  jumpForce: 4.5
-  splashPrefab: {fileID: 1064981557642391751, guid: 8adb0fa1062359240818eaf97ebf5e79,
+  _rb: {fileID: 146639873}
+  _jumpForce: 4.5
+  _splashPrefab: {fileID: 1064981557642391751, guid: 8adb0fa1062359240818eaf97ebf5e79,
     type: 3}
-  ball: {fileID: 146639872}
-  cylinder: {fileID: 1455474509}
-  gameOver: {fileID: 577261480}
-  victory: {fileID: 56501356}
-  unskilledBallRef: {fileID: 2100000, guid: 702ec0411574af744bf33a502ce5de99, type: 2}
-  victoryText: {fileID: 41591613}
+  _ball: {fileID: 146639872}
+  _cylinder: {fileID: 1455474509}
+  _gameOver: {fileID: 577261480}
+  _victory: {fileID: 56501356}
+  _unskilledBallRef: {fileID: 2100000, guid: 702ec0411574af744bf33a502ce5de99, type: 2}
+  _victoryText: {fileID: 41591613}
 --- !u!135 &146639875
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1249,8 +1249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e037d910fdc3445bb98c843744e43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 146639878}
-  smoothSpeed: 0.05
+  _ball: {fileID: 146639878}
+  _smoothSpeed: 0.05
 --- !u!1 &1027107675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aadc2a904210fc4cb00eb19a2cd2181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 750
+  _rotateSpeed: 750
 --- !u!1 &1551140302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,15 +2001,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336225f229dc1dc418181090b9e19573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  last_ring: {fileID: 945535239}
-  prefab_ring: {fileID: 635139112457931957, guid: e8da23e5c7c9b7242aee5c42f03e01c5,
+  _lastRing: {fileID: 945535239}
+  _prefabRing: {fileID: 635139112457931957, guid: e8da23e5c7c9b7242aee5c42f03e01c5,
     type: 3}
-  final_ring: {fileID: 1242059214214908337, guid: 142c0238b85eae946b71c5fbca99ff93,
+  _finalRing: {fileID: 1242059214214908337, guid: 142c0238b85eae946b71c5fbca99ff93,
     type: 3}
-  cylinder: {fileID: 1455474509}
-  unsafeMaterialRef: {fileID: 2100000, guid: bf916d2f9b854f547a103c3043ccbc3e, type: 2}
-  safeMaterialRef: {fileID: 2100000, guid: 5d6b606c800d2b24c91f2e871f8b0a99, type: 2}
-  gm: {fileID: 2019919435}
+  _cylinder: {fileID: 1455474509}
+  _unsafeMaterialRef: {fileID: 2100000, guid: bf916d2f9b854f547a103c3043ccbc3e, type: 2}
 --- !u!4 &2019919434
 Transform:
   m_ObjectHideFlags: 0
@@ -2038,12 +2036,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  scoreText: {fileID: 270272782}
-  levelText: {fileID: 1112283007}
   level: 0
   skill: 0
-  ball: {fileID: 146639872}
-  skilledBallRef: {fileID: 2100000, guid: 4a36b99861741e9428d7a4a173133817, type: 2}
+  _scoreText: {fileID: 270272782}
+  _levelText: {fileID: 1112283007}
+  _ball: {fileID: 146639872}
+  _skilledBallRef: {fileID: 2100000, guid: 4a36b99861741e9428d7a4a173133817, type: 2}
 --- !u!1001 &635139112597763506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2053,6 +2051,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 945535241, guid: e8da23e5c7c9b7242aee5c42f03e01c5, type: 3}
       propertyPath: ball
+      value: 
+      objectReference: {fileID: 146639878}
+    - target: {fileID: 945535241, guid: e8da23e5c7c9b7242aee5c42f03e01c5, type: 3}
+      propertyPath: _ball
       value: 
       objectReference: {fileID: 146639878}
     - target: {fileID: 293048958096826117, guid: e8da23e5c7c9b7242aee5c42f03e01c5,
